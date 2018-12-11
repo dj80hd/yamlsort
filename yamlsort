@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+require 'yaml' 
+
+# normalize yaml in alpha order by key
+#
+# Usage:
+# $ cat foo.yaml |yamlsort
+#
+# $ yamlsort foo.yaml
+
+def sort_hash(orig)
+  {}.tap do |sorted|
+    orig.sort.each do |k, v|
+      if v.is_a?(Hash)
+        sorted[k] = sort_hash(v)
+      elsif v.is_a?(Array) && v.length > 0 && v[0].is_a?(Hash)
+        sorted[k] = v.map {|a| sort_hash(a)}
+      else
+        sorted[k] = v
+      end
+    end
+  end
+end
+
+def main
+  YAML.load_stream(ARGF.read).collect # for all yamls in file/stdin:
+    .map{|m| sort_hash(m)}            # alpha sort contents of each yaml by key
+    .sort_by(&:to_s)                  # and alpha sort list of yamls
+    .each { |m| puts YAML.dump(m) }   # before printing each yaml
+end
+
+main
