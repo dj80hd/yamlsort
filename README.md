@@ -2,7 +2,17 @@
 
 Alpha sort yaml files by key.
 
-Provides normalized yaml content suitable for line by line diffs.
+Provides normalized yaml content suitable for line diffs.
+
+## Usage
+
+```bash
+yamlsort foo.yaml
+```
+
+```bash
+cat foo.yaml |yamlsort
+```
 
 ## Install
 
