@@ -11,7 +11,7 @@ yamlsort foo.yaml
 ```
 
 ```bash
-cat foo.yaml |yamlsort
+cat foo.yaml | yamlsort
 ```
 
 ## Install
