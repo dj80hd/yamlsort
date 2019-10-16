@@ -10,6 +10,7 @@ require 'yaml'
 # $ yamlsort foo.yaml
 
 def sort_hash(orig)
+  return unless orig
   {}.tap do |sorted|
     orig.sort.each do |k, v|
       if v.is_a?(Hash)
