@@ -17,6 +17,6 @@ cat foo.yaml | yamlsort
 ## Install
 
 ```bash
-sudo curl -L https://github.com/dj80hd/yamlsort/raw/master/yamlsort -o /usr/local/bin/yamlsort && sudo chmod +x /usr/local/bin/yamlsort
+sudo curl -sL https://github.com/dj80hd/yamlsort/raw/master/yamlsort -o /usr/local/bin/yamlsort && sudo chmod +x /usr/local/bin/yamlsort
 ```
 
